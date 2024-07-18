@@ -14,6 +14,7 @@ import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.resource.URLResourceFactory;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.glassfish.jersey.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +28,6 @@ public class TutorialApiServer {
 
     private static final String ROOT_CONTEXT = "/";
     private static final String API_PATTERN = "api/*";
-    private static final String APPLICATION_INIT_PARAM_KEY = "jakarta.ws.rs.Application";
 
     private static Server createJettyServer (int port, Config config) throws MalformedURLException {
         HttpConfiguration httpsConfiguration =  new HttpConfiguration();
@@ -67,7 +67,7 @@ public class TutorialApiServer {
         server.setHandler(servletContextHandler);
 
         ServletHolder apiServletHolder = servletContextHandler.addServlet(ServletContainer.class, API_PATTERN);
-        apiServletHolder.setInitParameter(APPLICATION_INIT_PARAM_KEY, ApiApplication.class.getName());
+        apiServletHolder.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, ApiApplication.class.getName());
 
         return server;
     }
