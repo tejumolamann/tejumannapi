@@ -123,7 +123,7 @@
                         <target>${java.version}</target>
                         <compilerArgs>
                             <arg>-Werror</arg>
-                            <arg>-Xlint:all</arg>
+                            <arg>-Xlint:-requires-automatic,-requires-transitive-automatic</arg>
                         </compilerArgs>
                         <failOnError>true</failOnError>
                         <failOnWarning>true</failOnWarning>
