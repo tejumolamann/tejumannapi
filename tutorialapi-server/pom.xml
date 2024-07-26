@@ -78,6 +78,12 @@
             <artifactId>config</artifactId>
         </dependency>
 
+        <!-- Used for testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+
     </dependencies>
 
     <packaging>jar</packaging>
