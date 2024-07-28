@@ -1,5 +1,6 @@
 module tutorialapi.rest {
     exports com.tutorialapi.rest;
+    exports com.tutorialapi.rest.resource;
     requires jakarta.ws.rs;
     requires jersey.server;
     requires jersey.common;
