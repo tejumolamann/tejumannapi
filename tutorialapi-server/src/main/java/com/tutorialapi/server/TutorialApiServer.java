@@ -27,7 +27,7 @@ public class TutorialApiServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TutorialApiServer.class);
 
     private static final String ROOT_CONTEXT = "/";
-    private static final String API_PATTERN = "api/*";
+    private static final String API_PATTERN = "/api/*";
 
     private static Server createJettyServer (int port, Config config) throws MalformedURLException {
         HttpConfiguration httpsConfiguration =  new HttpConfiguration();
