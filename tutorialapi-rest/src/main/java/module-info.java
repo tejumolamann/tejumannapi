@@ -6,6 +6,8 @@ module tutorialapi.rest {
     requires jersey.common;
     requires org.glassfish.hk2.api;
     requires org.slf4j;
+    requires java.logging;
 
     opens com.tutorialapi.rest to jersey.server;
+    opens com.tutorialapi.rest.resource to jersey.server;
 }
