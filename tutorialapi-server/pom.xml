@@ -14,12 +14,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>tutorialapi-rest</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.ws.rs</groupId>
-                    <artifactId>jakarta.ws.rs-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
@@ -62,12 +56,6 @@
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>jakarta.ws.rs</groupId>
-                    <artifactId>jakarta.ws.rs-api</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!--Fixed dependency version convergence problem-->
