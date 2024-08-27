@@ -1,18 +1,17 @@
 package com.tutorialapi.rest.resource;
 
+import com.tutorialapi.rest.security.AccessLogFilter;
+import com.tutorialapi.rest.security.CorsFilter;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.Response;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.logging.LogManager;
 
 class TestResourceTest extends JerseyTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestResourceTest.class);
 
     static {
         LogManager.getLogManager().reset();
@@ -20,7 +19,12 @@ class TestResourceTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        return new ResourceConfig(TestResource.class);
+
+        return new ResourceConfig(
+                TestResource.class,
+                AccessLogFilter.class,
+                CorsFilter.class
+        );
     }
 
     @Test
@@ -30,6 +34,7 @@ class TestResourceTest extends JerseyTest {
         Assertions.assertEquals(200, response.getStatus());
         Assertions.assertEquals("Hello", response.readEntity(String.class));
 
-        LOGGER.info("{}", response.getHeaders());
+        Assertions.assertEquals("*", response.getHeaderString("Access-Control-Allow-Origin"));
+        Assertions.assertEquals("DELETE, HEAD, GET, OPTIONS, PATCH, POST, PUT", response.getHeaderString("Access-Control-Allow-Methods"));
     }
 }

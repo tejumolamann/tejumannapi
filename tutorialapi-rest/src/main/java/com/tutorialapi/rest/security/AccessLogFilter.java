@@ -6,17 +6,15 @@ import jakarta.ws.rs.ext.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-
 @Provider
 public class AccessLogFilter implements ContainerRequestFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger("access-log");
 
     @Override
-    public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+    public void filter(ContainerRequestContext containerRequestContext) {
         String user = "TODO";
         String method = containerRequestContext.getMethod();
-        String path = containerRequestContext.getUriInfo().getPath();
+        String path = containerRequestContext.getUriInfo().getAbsolutePath().getPath();
 
         LOGGER.info("{} => {} {}", user, method, path);
     }
