@@ -12,4 +12,5 @@ module tutorialapi.rest {
     requires org.glassfish.hk2.api;
     requires org.slf4j;
     requires java.logging;
+    requires tutorialapi.model;
 }
