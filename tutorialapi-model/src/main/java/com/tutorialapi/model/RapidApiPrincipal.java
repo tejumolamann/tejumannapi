@@ -3,28 +3,7 @@ package com.tutorialapi.model;
 import java.security.Principal;
 import java.util.Objects;
 
-public class RapidApiPrincipal implements Principal {
-    private final String user;
-    private final Subscription subscription;
-    private final String proxySecret;
-
-    public RapidApiPrincipal(String user, Subscription subscription, String proxySecret) {
-        this.user = user;
-        this.subscription = subscription;
-        this.proxySecret = proxySecret;
-    }
-
-    public String getProxySecret() {
-        return proxySecret;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public Subscription getSubscription() {
-        return subscription;
-    }
+public record RapidApiPrincipal(String user, Subscription subscription, String proxySecret) implements Principal {
 
     @Override
     public String getName() {
@@ -37,11 +16,6 @@ public class RapidApiPrincipal implements Principal {
         if (obj == null || getClass() != obj.getClass()) return false;
         RapidApiPrincipal that = (RapidApiPrincipal) obj;
         return Objects.equals(user, that.user) && Objects.equals(proxySecret, that.proxySecret) && subscription == that.subscription;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(user, subscription, proxySecret);
     }
 
     @Override
