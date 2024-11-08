@@ -6,6 +6,16 @@ import java.util.Objects;
 public record RapidApiPrincipal(String user, Subscription subscription, String proxySecret) implements Principal {
 
     @Override
+    public int hashCode() {
+        // TODO:  implement a better hashcode
+        if (user != null) {
+            return user.hashCode();
+        }
+
+        return 0;
+    }
+
+    @Override
     public String getName() {
         return user;
     }

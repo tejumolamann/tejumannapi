@@ -9,7 +9,7 @@ public class ApiApplication extends ResourceConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiApplication.class);
 
     public ApiApplication() {
-        packages(ApiApplication.class.getPackageName());
+        packages("com.tutorialapi.rest");
 
         register(new AbstractBinder() {
             @Override

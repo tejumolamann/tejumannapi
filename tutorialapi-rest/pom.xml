@@ -86,7 +86,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!--        Fixes JAXB warning from Jersey-->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>

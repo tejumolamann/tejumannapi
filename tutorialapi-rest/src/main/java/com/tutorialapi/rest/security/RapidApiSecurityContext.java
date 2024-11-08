@@ -21,7 +21,7 @@ public class RapidApiSecurityContext implements SecurityContext {
 
     @Override
     public boolean isUserInRole(String s) {
-        return principal.getSubscription() == Subscription.from(s).orElse(null);
+        return principal.subscription() == Subscription.from(s).orElse(null);
     }
 
     @Override

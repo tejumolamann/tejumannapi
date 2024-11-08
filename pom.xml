@@ -43,7 +43,7 @@
             <dependency>
                 <groupId>org.glassfish.jersey</groupId>
                 <artifactId>jersey-bom</artifactId>
-                <version>3.1.8</version>
+                <version>3.1.9</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -112,8 +112,7 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
-                <version>5.10.3</version>
-                <scope>test</scope>
+                <version>5.11.3</version>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
@@ -148,7 +147,7 @@
                         <target>${java.version}</target>
                         <compilerArgs>
                             <arg>-Werror</arg>
-                            <arg>-Xlint:-requires-automatic,-requires-transitive-automatic</arg>
+                            <arg>-Xlint:-module</arg>
                         </compilerArgs>
                         <failOnError>true</failOnError>
                         <failOnWarning>true</failOnWarning>

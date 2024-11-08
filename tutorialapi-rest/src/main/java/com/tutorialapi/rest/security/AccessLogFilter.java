@@ -32,7 +32,7 @@ public class AccessLogFilter implements ContainerRequestFilter {
                 .map(RapidApiSecurityContext::getUserPrincipal)
                 .filter(principal -> principal instanceof RapidApiPrincipal)
                 .map(principal -> (RapidApiPrincipal) principal)
-                .map(RapidApiPrincipal::getUser)
+                .map(RapidApiPrincipal::user)
                 .findFirst()
                 .orElse("?");
 
