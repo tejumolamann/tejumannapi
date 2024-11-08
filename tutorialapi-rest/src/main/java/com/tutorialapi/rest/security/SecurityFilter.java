@@ -5,6 +5,7 @@ import com.tutorialapi.model.Subscription;
 import jakarta.ws.rs.NotAuthorizedException;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.ContainerRequestFilter;
+import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,15 +42,24 @@ public class SecurityFilter implements ContainerRequestFilter {
         String notAuthorizedExceptionMessage = "Missing or invalid security header: ";
 
         if (proxySecret.isEmpty()) {
-            throw new NotAuthorizedException(notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_PROXY_SECRET.getHeader());
+            throw new NotAuthorizedException(
+                    notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_PROXY_SECRET.getHeader(),
+                    Response.status(Response.Status.UNAUTHORIZED).build()
+            );
         }
 
         if (user.isEmpty()) {
-            throw new NotAuthorizedException(notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_USER.getHeader());
+            throw new NotAuthorizedException(
+                    notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_USER.getHeader(),
+                    Response.status(Response.Status.UNAUTHORIZED).build()
+            );
         }
 
         if (subscription.isEmpty()) {
-            throw new NotAuthorizedException(notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_SUBSCRIPTION.getHeader());
+            throw new NotAuthorizedException(
+                    notAuthorizedExceptionMessage + SecurityHeader.RAPID_API_SUBSCRIPTION.getHeader(),
+                    Response.status(Response.Status.UNAUTHORIZED).build()
+            );
         }
 
         RapidApiPrincipal principal = new RapidApiPrincipal(user.get(), subscription.get(), proxySecret.get());

@@ -37,6 +37,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+        </dependency>
 <!--        Jersey test framework dependencies, test scope must be provided because default scope was provided in the bom-->
         <dependency>
             <groupId>org.glassfish.jersey.test-framework</groupId>
